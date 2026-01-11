@@ -1,15 +1,11 @@
 import ReactDOM from 'react-dom';
-import {observable, runInAction} from 'mobx';
+import {makeObservable, observable, runInAction, toJS} from 'mobx';
 import {observerBatching} from 'mobx-react-lite';
 import {get, set} from 'lodash';
-import {toJSCompat} from '../utils/toJSCompat';
 import {type FieldProps, type OnValidateFunction} from '../Field/Field.types';
 import {type FormApi, type FormControllerOptions, type FormField, type Values} from './FormControllerClass.types';
-import {isMobx6Used} from '../utils/isMobx6Used';
 import {isEmpty} from '../utils/isEmpty';
 import {mergeDeep} from '../utils/mergeDeep';
-import {makeObservableForMobx6} from '../utils/makeObservableForMobx6';
-import {decorateForMobx5} from '../utils/decorateForMobx5';
 import {assign} from '../utils/assign';
 
 export class FormControllerClass {
@@ -22,13 +18,11 @@ export class FormControllerClass {
       observerBatching(ReactDOM.unstable_batchedUpdates);
     }
 
-    if (isMobx6Used()) {
-      makeObservableForMobx6<This, 'fieldLevelValidations'>(this, {
-        fieldLevelValidations: observable.shallow,
-        fields: observable.shallow,
-        API: observable,
-      });
-    }
+    makeObservable<This, 'fieldLevelValidations'>(this, {
+      fieldLevelValidations: observable.shallow,
+      fields: observable.shallow,
+      API: observable,
+    });
 
     this.options = options;
 
@@ -95,8 +89,8 @@ export class FormControllerClass {
   };
 
   // executes general form validator passed to Form as a `onValidate` prop and returns errors
-  protected runFormLevelValidations = () => {
-    return this.options.onValidate ? this.options.onValidate(toJSCompat(this.API.values)) : {};
+  protected runFormLevelValidations = async () => {
+    return this.options.onValidate ? this.options.onValidate(toJS(this.API.values)) : {};
   };
 
   // executes all field level validators passed to Fields as a `onValidate` prop and returns errors
@@ -168,17 +162,13 @@ export class FormControllerClass {
         },
       };
 
-      if (isMobx6Used()) {
-        const fieldProps = makeObservableForMobx6(rawFieldProps, {
-          value: observable,
-          errors: observable,
-          fieldState: observable,
-        });
+      const fieldProps = makeObservable(rawFieldProps, {
+        value: observable,
+        errors: observable,
+        fieldState: observable,
+      });
 
-        this.fields.set(fieldName, fieldProps);
-      } else {
-        this.fields.set(fieldName, rawFieldProps);
-      }
+      this.fields.set(fieldName, fieldProps);
     });
   };
 
@@ -448,10 +438,10 @@ export class FormControllerClass {
 
     const [fieldValidationErrors, formValidationErrors] = await Promise.all([
       !isEmpty(this.fieldLevelValidations) ? this.runFieldLevelValidations() : {},
-      this.options.onValidate ? this.runFormLevelValidations() : {},
+      this.options.onValidate ? this.runFormLevelValidations() : undefined,
     ]);
 
-    const combinedErrors = mergeDeep(fieldValidationErrors, formValidationErrors);
+    const combinedErrors = mergeDeep(fieldValidationErrors, formValidationErrors ?? {});
 
     runInAction(() => {
       this.API.errors = combinedErrors;
@@ -483,7 +473,7 @@ export class FormControllerClass {
 
     await this.validate();
 
-    const [nonObservableErrors, nonObservableValues] = toJSCompat([this.API.errors, this.API.values]);
+    const [nonObservableErrors, nonObservableValues] = toJS([this.API.errors, this.API.values]);
     const isValid = isEmpty(nonObservableErrors);
 
     let error: unknown;
@@ -492,8 +482,8 @@ export class FormControllerClass {
     try {
       if (this.options.onSubmit) {
         response = await this.options.onSubmit({
-          errors: nonObservableErrors!,
-          values: nonObservableValues!,
+          errors: nonObservableErrors,
+          values: nonObservableValues,
           isValid,
           event: submitEvent,
         });
@@ -515,8 +505,8 @@ export class FormControllerClass {
     }
 
     return {
-      errors: nonObservableErrors!,
-      values: nonObservableValues!,
+      errors: nonObservableErrors,
+      values: nonObservableValues,
       isValid,
       submitResult: {
         error,
@@ -524,14 +514,6 @@ export class FormControllerClass {
       },
     };
   };
-}
-
-if (!isMobx6Used()) {
-  decorateForMobx5(FormControllerClass, {
-    fieldLevelValidations: observable.ref,
-    API: observable,
-    fields: observable,
-  });
 }
 
 type This = FormControllerClass;
