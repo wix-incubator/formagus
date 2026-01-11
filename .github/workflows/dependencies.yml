@@ -35,7 +35,7 @@ jobs:
           node-version: 24
 
       - name: Install dependencies
-        run: NPQ_PKG_MGR=yarn npx npq install
+        run: yarn
 
       - name: '🔏 Audit NPM dependencies signatures'
         run: npm audit signatures
