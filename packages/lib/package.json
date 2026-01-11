@@ -1,30 +1,6 @@
 {
   "name": "formagus",
   "description": "Versatile form library powered by Mobx",
-  "version": "4.0.0",
-  "license": "MIT",
-  "author": {
-    "name": "Iaroslav Shvets",
-    "email": "iaroslav.shvets@gmail.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:iaroslavshvets/formagus.git",
-    "directory": "/packages/lib"
-  },
-  "exports": {
-    "types": "./dist/types/index.d.ts",
-    "import": "./dist/esm/index.js",
-    "require": "./dist/cjs/index.js"
-  },
-  "main": "./dist/cjs/index.js",
-  "module": "./dist/esm/index.js",
-  "types": "./dist/types/index.d.ts",
-  "sideEffects": false,
-  "files": [
-    "dist",
-    "!__tests__"
-  ],
   "scripts": {
     "build": "rm -rf dist && yarn build:ts",
     "build:ts": "tsc --declarationDir dist/types && tsc --module CommonJS --outDir dist/cjs",
@@ -42,6 +18,14 @@
     "test:watch": "vitest watch",
     "ts": "tsgo --noEmit"
   },
+  "exports": {
+    "types": "./dist/types/index.d.ts",
+    "import": "./dist/esm/index.js",
+    "require": "./dist/cjs/index.js"
+  },
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
   "dependencies": {
     "lodash": "^4.17.21"
   },
@@ -81,6 +65,22 @@
   },
   "engines": {
     "node": ">=22"
+  },
+  "files": [
+    "dist",
+    "!__tests__"
+  ],
+  "sideEffects": false,
+  "version": "4.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Iaroslav Shvets",
+    "email": "iaroslav.shvets@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:iaroslavshvets/formagus.git",
+    "directory": "/packages/lib"
   },
   "config": {
     "commitizen": {
