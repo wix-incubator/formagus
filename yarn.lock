@@ -15614,7 +15614,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
+"prop-types@npm:^15.5.0, prop-types@npm:^15.6.2, prop-types@npm:^15.7.2, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -15841,14 +15841,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-loadable@npm:@docusaurus/react-loadable@6.0.0":
-  version: 6.0.0
-  resolution: "@docusaurus/react-loadable@npm:6.0.0"
+"react-loadable@npm:^5.5.0":
+  version: 5.5.0
+  resolution: "react-loadable@npm:5.5.0"
   dependencies:
-    "@types/react": "npm:*"
+    prop-types: "npm:^15.5.0"
   peerDependencies:
     react: "*"
-  checksum: 10c0/6b145d1a8d2e7342ceef58dd154aa990322f72a6cb98955ab8ce8e3f0dc7f0c5d00f9c2e4efa8d356c5effed72a130b5588857332b11faba0398f5429b484b04
+  checksum: 10c0/d5501d9e6d68378c8320f3bb7941ae12c62bc96fe3001b06dc46fa284d4c018137e8cf74fc3ff0fcf48df618a3d3585fe3e32b1f164691db4c848531b83e3884
   languageName: node
   linkType: hard
 

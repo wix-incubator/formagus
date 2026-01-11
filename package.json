@@ -16,6 +16,9 @@
     "deps:list-mismatches": "syncpack list-mismatches",
     "format:package.json": "syncpack format"
   },
+  "resolutions": {
+    "react-loadable": "^5.5.0"
+  },
   "devDependencies": {
     "@eslint/compat": "^2.0.0",
     "@eslint/eslintrc": "^3.3.3",
