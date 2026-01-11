@@ -8,6 +8,7 @@
     "es-lint": "eslint ./src/**/*.(json|ts|tsx) --fix --max-warnings=0",
     "format": "prettier --write 'src/**/*.{ts,tsx,js,json,scss,css}'",
     "lint": "yarn es-lint && yarn format",
+    "lint:fix": "yarn es-lint --fix && yarn format",
     "postcommit": "git update-index --again",
     "posttest": "yarn test:coverage",
     "precommit": "lint-staged",
