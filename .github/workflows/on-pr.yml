@@ -14,9 +14,7 @@ jobs:
         with:
           node-version: 24
       - name: Install dependencies
-        uses: borales/actions-yarn@972a7c1f85208fe23aa783c7841034a43c40c162
-        with:
-          cmd: yarn install
+        run: yarn install
       - name: Build library
         uses: borales/actions-yarn@972a7c1f85208fe23aa783c7841034a43c40c162
         with:
