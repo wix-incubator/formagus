@@ -65,7 +65,7 @@
     "react-dom": "*"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
   },
   "files": [
     "src",
