@@ -26,7 +26,7 @@
     "module": "ES2022",
     "moduleResolution": "Node",
     "skipLibCheck": true,
-    "types": ["vitest/globals.d.ts"],
+    "types": ["vitest/globals"],
     "declaration": true,
     "outDir": "dist/esm"
   },

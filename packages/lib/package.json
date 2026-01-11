@@ -1,16 +1,23 @@
 {
   "name": "formagus",
   "description": "Versatile form library powered by Mobx",
-  "version": "3.0.1",
-  "license": "MIT",
-  "author": {
-    "name": "Iaroslav Shvets",
-    "email": "iaroslav.shvets@gmail.com"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:iaroslavshvets/formagus.git",
-    "directory": "/packages/lib"
+  "scripts": {
+    "build": "rm -rf dist && yarn build:ts",
+    "build:ts": "tsc --declarationDir dist/types && tsc --module CommonJS --outDir dist/cjs",
+    "commit-cz": "git-cz",
+    "es-lint": "eslint ./src/**/*.(json|ts|tsx) --fix --max-warnings=0",
+    "format": "prettier --write 'src/**/*.{ts,tsx,js,json,scss,css}'",
+    "lint": "yarn es-lint && yarn format",
+    "lint:fix": "yarn es-lint --fix && yarn format",
+    "postcommit": "git update-index --again",
+    "posttest": "yarn test:coverage",
+    "precommit": "lint-staged",
+    "prepush": "yarn test",
+    "test": "yarn test:unit",
+    "test:coverage": "vitest --coverage",
+    "test:unit": "vitest run",
+    "test:watch": "vitest watch",
+    "ts": "tsgo --noEmit"
   },
   "exports": {
     "types": "./dist/types/index.d.ts",
@@ -20,57 +27,36 @@
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
   "types": "./dist/types/index.d.ts",
-  "sideEffects": false,
-  "files": [
-    "dist",
-    "!__tests__"
-  ],
-  "scripts": {
-    "build": "rm -rf dist && yarn build:ts",
-    "build:ts": "tsc --declarationDir dist/types && tsc --module CommonJS --outDir dist/cjs",
-    "commit-cz": "git-cz",
-    "es-lint": "eslint ./src/**/*.(json|ts|tsx) --fix --max-warnings=0",
-    "format": "prettier --write 'src/**/*.{ts,tsx,js,json,scss,css}'",
-    "lint": "yarn es-lint && yarn format",
-    "postcommit": "git update-index --again",
-    "posttest": "yarn test:coverage",
-    "precommit": "lint-staged",
-    "prepush": "yarn test",
-    "test": "yarn test:unit",
-    "test:coverage": "vitest --coverage",
-    "test:unit": "vitest run",
-    "test:watch": "vitest watch",
-    "tsc": "tsc --noEmit"
-  },
   "dependencies": {
     "lodash": "^4.17.21"
   },
   "devDependencies": {
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/react": "^16.2.0",
-    "@types/lodash": "^4.17.16",
-    "@types/react": "^19.0.12",
-    "@types/react-dom": "^19.0.4",
-    "@typescript-eslint/eslint-plugin": "^8.27.0",
-    "@typescript-eslint/parser": "^8.27.0",
-    "@vitejs/plugin-react": "^4.3.4",
-    "@vitest/coverage-v8": "^3.0.9",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/react": "^16.3.1",
+    "@types/lodash": "^4.17.21",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@typescript-eslint/eslint-plugin": "^8.50.1",
+    "@typescript-eslint/parser": "^8.50.1",
+    "@typescript/native-preview": "^7.0.0-dev.20251228.1",
+    "@vitejs/plugin-react": "^5.1.2",
+    "@vitest/coverage-v8": "^4.0.16",
     "commitizen": "^4.3.1",
     "cz-conventional-changelog": "^3.3.0",
-    "eslint": "^9.22.0",
+    "eslint": "^9.39.2",
     "is-ci": "^4.1.0",
-    "jsdom": "^26.0.0",
-    "lint-staged": "^15.5.0",
-    "mobx": "^6.13.7",
-    "mobx-react-lite": "^4.1.0",
-    "prettier": "^3.5.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "jsdom": "^27.4.0",
+    "lint-staged": "^16.2.7",
+    "mobx": "^6.15.0",
+    "mobx-react-lite": "^4.1.1",
+    "prettier": "^3.7.4",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
     "trier-promise": "^1.0.1",
     "tslib": "^2.8.1",
-    "typescript": "^5.8.2",
-    "vite": "^7.1.9",
-    "vitest": "^3.0.9"
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0",
+    "vitest": "^4.0.16"
   },
   "peerDependencies": {
     "mobx": "*",
@@ -79,7 +65,24 @@
     "react-dom": "*"
   },
   "engines": {
-    "node": ">=22"
+    "node": ">=24"
+  },
+  "files": [
+    "src",
+    "dist",
+    "!__tests__"
+  ],
+  "sideEffects": false,
+  "version": "4.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Iaroslav Shvets",
+    "email": "iaroslav.shvets@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:iaroslavshvets/formagus.git",
+    "directory": "/packages/lib"
   },
   "config": {
     "commitizen": {
