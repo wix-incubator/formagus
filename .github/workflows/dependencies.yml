@@ -37,7 +37,7 @@ jobs:
       - name: Install dependencies
         uses: borales/actions-yarn@972a7c1f85208fe23aa783c7841034a43c40c162
         with:
-          cmd: NPQ_PKG_MGR=yarn npx npq install
+          cmd: NPQ_PKG_MGR=yarn yarn exec npq-hero
 
       - name: '🔏 Audit NPM dependencies signatures'
         run: npm audit signatures
