@@ -68,6 +68,7 @@
     "node": ">=22"
   },
   "files": [
+    "src",
     "dist",
     "!__tests__"
   ],
