@@ -15,8 +15,8 @@ jobs:
         with:
           node-version: 24
 
-      - name: Install npq globally
-        run: npm install -g npq
+      - name: Install npq & yarn globally
+        run: npm install npq yarn -g
 
       - name: Install dependencies
         run: NPQ_PKG_MGR=yarn npq install
