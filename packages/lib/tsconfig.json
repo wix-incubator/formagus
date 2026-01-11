@@ -33,7 +33,6 @@
   "include": [
     "./typings/**/*.d.ts",
     "./src/**/*.ts*",
-    "./src/__tests__/**/*.ts*",
-    "vitest.config.mts"
+    "./src/__tests__/**/*.ts*"
   ]
 }
