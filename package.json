@@ -30,11 +30,11 @@
     "eslint-plugin-de-morgan": "^1.2.1",
     "eslint-plugin-import-x": "^4.9.1",
     "eslint-plugin-prettier": "^5.5.4",
-    "eslint-plugin-react": "^7.37.4",
+    "eslint-plugin-react": "^7.37.5",
     "globals": "^16.0.0",
     "lefthook": "^1.12.3",
     "prettier": "^3.5.3",
-    "syncpack": "^13.0.3",
+    "syncpack": "^13.0.4",
     "typescript": "^5.8.2",
     "typescript-eslint": "^8.27.0"
   }
