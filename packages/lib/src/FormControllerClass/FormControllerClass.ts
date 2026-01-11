@@ -288,6 +288,9 @@ export class FormControllerClass {
           isTouched: false,
           isChanged: false,
         },
+        controller: {
+          options: this.options,
+        },
       };
     });
   };
