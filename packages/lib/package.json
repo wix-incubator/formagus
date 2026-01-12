@@ -81,7 +81,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:iaroslavshvets/formagus.git",
+    "url": "git@github.com:wix-incubator/formagus.git",
     "directory": "/packages/lib"
   },
   "config": {
