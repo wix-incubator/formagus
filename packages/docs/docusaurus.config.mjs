@@ -45,7 +45,7 @@ const config = {
         docs: {
           sidebarPath: resolve(__dirname, './sidebars.mjs'),
           routeBasePath: '/',
-          editUrl: 'https://github.com/iaroslavshvets/formagus/tree/master/packages/docs',
+          editUrl: 'https://github.com/wix-incubator/formagus/tree/master/packages/docs',
         },
         pages: {},
         blog: false,
@@ -68,7 +68,7 @@ const config = {
 
         items: [
           {
-            href: 'https://github.com/iaroslavshvets/formagus',
+            href: 'https://github.com/wix-incubator/formagus',
             label: 'GitHub',
             position: 'right',
           },
