@@ -9,22 +9,30 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8
+
       - name: Install node
         uses: actions/setup-node@65d868f8d4d85d7d4abb7de0875cde3fcc8798f5
         with:
           node-version: 24
+
+      - name: Install npq & yarn globally
+        run: npm install npq yarn -g
+
       - name: Install dependencies
-        run: yarn
+        run: NPQ_PKG_MGR=yarn npq install
+
       - name: Build library
         uses: borales/actions-yarn@972a7c1f85208fe23aa783c7841034a43c40c162
         with:
           dir: packages/lib
           cmd: build
+
       - name: Test library
         uses: borales/actions-yarn@972a7c1f85208fe23aa783c7841034a43c40c162
         with:
           dir: packages/lib
           cmd: test:coverage
+
       - name: Build docs
         uses: borales/actions-yarn@972a7c1f85208fe23aa783c7841034a43c40c162
         with:
