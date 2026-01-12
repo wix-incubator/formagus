@@ -20,7 +20,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'iaroslavshvets', // Usually your GitHub org/user name.
+  organizationName: 'wix-incubator', // Usually your GitHub org/user name.
   projectName: 'formagus', // Usually your repo name.
 
   onBrokenLinks: 'throw',
