@@ -5,6 +5,7 @@
     "sourceMap": true,
     "erasableSyntaxOnly": true,
     "allowJs": false,
+    "allowImportingTsExtensions": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "resolveJsonModule": true,
     "importHelpers": true,
