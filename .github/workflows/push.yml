@@ -24,16 +24,12 @@ jobs:
         run: NPQ_PKG_MGR=yarn npq install
 
       - name: Build library
-        run: yarn
-        with:
-          dir: packages/lib
-          cmd: build
+        run: yarn build
+        working-directory: ./packages/lib
 
       - name: Test library
-        run: yarn
-        with:
-          dir: packages/lib
-          cmd: test:coverage
+        run: yarn test:coverage
+        working-directory: ./packages/lib
 
       - uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de
         with:

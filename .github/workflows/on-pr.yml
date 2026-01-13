@@ -22,19 +22,13 @@ jobs:
         run: NPQ_PKG_MGR=yarn npq install
 
       - name: Build library
-        run: yarn
-        with:
-          dir: packages/lib
-          cmd: build
+        run: yarn build
+        working-directory: ./packages/lib
 
       - name: Test library
-        run: yarn
-        with:
-          dir: packages/lib
-          cmd: test:coverage
+        run: yarn test:coverage
+        working-directory: ./packages/lib
 
       - name: Build docs
-        run: yarn
-        with:
-          dir: packages/docs
-          cmd: build
+        run: yarn build
+        working-directory: ./packages/docs
