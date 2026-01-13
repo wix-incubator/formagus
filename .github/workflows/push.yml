@@ -17,11 +17,13 @@ jobs:
         with:
           node-version: 24
 
-      - name: Install npq & yarn globally
-        run: npm install npq yarn -g
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Install dependencies
-        run: NPQ_PKG_MGR=yarn npq install
+        run: yes | npx npq install --immutable
+        env:
+          NPQ_PKG_MGR: yarn
 
       - name: Build library
         run: yarn build
