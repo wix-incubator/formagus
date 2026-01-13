@@ -24,13 +24,13 @@ jobs:
         run: NPQ_PKG_MGR=yarn npq install
 
       - name: Build library
-        uses: borales/actions-yarn@972a7c1f85208fe23aa783c7841034a43c40c162
+        run: yarn
         with:
           dir: packages/lib
           cmd: build
 
       - name: Test library
-        uses: borales/actions-yarn@972a7c1f85208fe23aa783c7841034a43c40c162
+        run: yarn
         with:
           dir: packages/lib
           cmd: test:coverage
