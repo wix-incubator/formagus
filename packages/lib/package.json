@@ -90,5 +90,9 @@
     "commitizen": {
       "path": "./packages/lib/node_modules/cz-conventional-changelog"
     }
+  },
+  "publishConfig": {
+    "logLevel": "verbose",
+    "registry": "https://registry.npmjs.org/"
   }
 }
