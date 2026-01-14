@@ -21,7 +21,7 @@ jobs:
         run: corepack enable
 
       - name: Install dependencies
-        run: yes | npx npq install --immutable
+        run: npx npq install --immutable
         env:
           NPQ_PKG_MGR: yarn
 
