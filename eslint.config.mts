@@ -8,9 +8,10 @@ import tsEslint from '@typescript-eslint/eslint-plugin';
 import eslintPluginImportX from 'eslint-plugin-import-x'
 import globals from 'globals';
 import {createTypeScriptImportResolver} from 'eslint-import-resolver-typescript';
+import {Config} from 'typescript-eslint';
 
 /** @type {import('eslint').Linter.Config[]} */
-const config  = [
+const config: Config  = [
   {
     files: ['**/*.@(mjs|js|ts|tsx)'],
     settings: {
@@ -43,10 +44,10 @@ const config  = [
     rules: {
       ...eslintPluginImportX.flatConfigs.recommended.rules,
       ...eslintPluginImportX.flatConfigs.typescript.rules,
-      ...prettier.configs.recommended.rules,
+      ...(prettier.configs?.recommended as any).rules,
       ...jsEslint.configs.recommended.rules,
       ...vitest.configs.recommended.rules,
-      ...deMorgan.rules.recommended,
+      ...(deMorgan.rules as any).recommended,
       ...tsEslint.configs['stylistic-type-checked'].rules,
       ...tsEslint.configs['strict-type-checked'].rules,
       '@typescript-eslint/consistent-type-definitions': ['error', 'type'],

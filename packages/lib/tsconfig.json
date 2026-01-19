@@ -5,6 +5,7 @@
     "sourceMap": true,
     "erasableSyntaxOnly": true,
     "allowJs": false,
+    "allowImportingTsExtensions": true,
     "lib": ["dom", "dom.iterable", "esnext"],
     "resolveJsonModule": true,
     "importHelpers": true,
@@ -17,7 +18,7 @@
     "noFallthroughCasesInSwitch": true,
     "forceConsistentCasingInFileNames": true,
     "allowUnreachableCode": false,
-    "noEmit": false,
+    "noEmit": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
     "pretty": true,
@@ -28,7 +29,8 @@
     "skipLibCheck": true,
     "types": ["vitest/globals"],
     "declaration": true,
-    "outDir": "dist/esm"
+    "outDir": "dist/esm",
+    "declarationDir": "dist/types"
   },
   "include": [
     "./typings/**/*.d.ts",
