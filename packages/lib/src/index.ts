@@ -1,13 +1,23 @@
 export type {
   OnValidateFunction,
   OnEqualityCheckFunction,
+  OnFormatFunction,
   FieldProps,
+  FieldCommonProps,
   FieldState,
   FieldApi,
   FieldRenderProps,
 } from './Field/Field.types';
 export type {FormProps} from './Form/Form.types';
-export type {FormApi, FormField} from './FormControllerClass/FormControllerClass.types';
+export type {
+  FormApi,
+  FormField,
+  FormState,
+  FormControllerOptions,
+  SubmitParams,
+  Values,
+  Errors,
+} from './FormControllerClass/FormControllerClass.types';
 export type {FormController} from './createFormController/createFormController.types';
 
 /**
