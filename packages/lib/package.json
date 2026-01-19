@@ -84,18 +84,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:wix-incubator/formagus.git",
+    "url": "git+ssh://git@github.com/wix-incubator/formagus.git",
     "directory": "/packages/lib"
   },
   "config": {
     "commitizen": {
       "path": "./packages/lib/node_modules/cz-conventional-changelog"
     }
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public",
-    "versionBumpStrategy": "manual",
-    "preserveSemverRange": true
   }
 }
