@@ -77,10 +77,6 @@
   ],
   "sideEffects": false,
   "version": "4.2.2",
-  "publishConfig": {
-    "logLevel": "verbose",
-    "registry": "https://registry.npmjs.org/"
-  },
   "license": "MIT",
   "author": {
     "name": "Iaroslav Shvets",
@@ -95,5 +91,11 @@
     "commitizen": {
       "path": "./packages/lib/node_modules/cz-conventional-changelog"
     }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public",
+    "versionBumpStrategy": "manual",
+    "preserveSemverRange": true
   }
 }
