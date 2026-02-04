@@ -20,10 +20,11 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
 
+      - name: Install safe-chain
+        run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/1.4.2/download/install-safe-chain.sh | sh -s -- --ci
+
       - name: Install dependencies
-        run: yes | npx npq install --immutable
-        env:
-          NPQ_PKG_MGR: yarn
+        run: yarn install --immutable
 
       - name: Build library
         run: yarn build
