@@ -19,7 +19,7 @@ jobs:
         run: corepack enable
 
       - name: Install safe-chain
-        run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/1.4.2/download/install-safe-chain.sh | sh -s -- --ci
+        run: curl -fsSL https://github.com/AikidoSec/safe-chain/releases/download/1.4.2/install-safe-chain.sh | sh -s -- --ci
 
       - name: Install dependencies
         run: yarn install --immutable
