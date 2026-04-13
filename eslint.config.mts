@@ -1,4 +1,3 @@
-// ts-check
 import jsEslint from '@eslint/js';
 import tsParser from '@typescript-eslint/parser';
 import prettier from 'eslint-plugin-prettier';
@@ -10,7 +9,6 @@ import globals from 'globals';
 import {createTypeScriptImportResolver} from 'eslint-import-resolver-typescript';
 import {Config} from 'typescript-eslint';
 
-/** @type {import('eslint').Linter.Config[]} */
 const config: Config  = [
   {
     files: ['**/*.@(mjs|js|ts|tsx)'],
@@ -48,8 +46,8 @@ const config: Config  = [
       ...jsEslint.configs.recommended.rules,
       ...vitest.configs.recommended.rules,
       ...(deMorgan.rules as any).recommended,
-      ...tsEslint.configs['stylistic-type-checked'].rules,
-      ...tsEslint.configs['strict-type-checked'].rules,
+      ...tsEslint.configs['stylistic-type-checked']?.rules,
+      ...tsEslint.configs['strict-type-checked']?.rules,
       '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
       '@typescript-eslint/consistent-type-imports': [
         'error',

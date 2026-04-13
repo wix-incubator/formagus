@@ -1,14 +1,14 @@
-import {type FormEvent} from 'react';
 import {type OnEqualityCheckFunction, type FieldApi} from '../Field/Field.types';
+import {type SubmitEvent} from 'react';
 
 export type Values = Record<string, any>;
 export type Errors = Record<string, any>;
 
-export type SubmitParams<T extends HTMLElement = HTMLElement> = {
+export type SubmitParams = {
   values: Values;
   errors: Errors;
   isValid: boolean;
-  event?: FormEvent<T>;
+  event?: SubmitEvent;
 };
 
 export type FormControllerOptions = {
@@ -51,10 +51,8 @@ export type FormApi = {
   values: Values;
   errors: Errors;
   formState: FormState;
-  submit: <T extends HTMLElement>(
-    submitEvent?: FormEvent<T>,
-  ) => Promise<
-    Omit<SubmitParams<T>, 'event'> & {
+  submit: (submitEvent?: SubmitEvent) => Promise<
+    Omit<SubmitParams, 'event'> & {
       submitResult: {
         error?: unknown;
         response?: any;

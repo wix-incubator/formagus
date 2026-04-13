@@ -104,7 +104,7 @@ describe('Form props', () => {
 
     await act(() => formDriver.whenSubmit());
 
-    expect(onValidate).toBeCalledWith({
+    expect(onValidate).toHaveBeenCalledWith({
       array: [
         {
           field_one_name: 'Tyrion Lannister:formatted',

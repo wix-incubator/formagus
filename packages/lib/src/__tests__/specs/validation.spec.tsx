@@ -175,8 +175,8 @@ describe('Validation', () => {
         expect(fieldOneDriver.get.errors()).toBe(null);
       });
 
-      expect(fieldLevelValidation).toBeCalled();
-      expect(formLevelValidation).not.toBeCalled();
+      expect(fieldLevelValidation).toHaveBeenCalled();
+      expect(formLevelValidation).not.toHaveBeenCalled();
     });
 
     it('should be with errors', async () => {
