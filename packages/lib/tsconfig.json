@@ -29,8 +29,9 @@
     "skipLibCheck": true,
     "types": ["vitest/globals"],
     "declaration": true,
-    "rootDir": "src",
+    "rootDir": ".",
     "outDir": "dist/esm",
     "declarationDir": "dist/types"
-  }
+  },
+  "include": ["src"]
 }
