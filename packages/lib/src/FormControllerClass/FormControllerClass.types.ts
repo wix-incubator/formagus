@@ -32,6 +32,7 @@ export type FieldState = {
   isActive: boolean;
   isValidating: boolean;
   isDirty: boolean;
+  isDisabled: boolean;
   isMounted: boolean;
   isRegistered: boolean;
 };
@@ -66,6 +67,7 @@ export type FormApi = {
   getField: (fieldName: string) => FormField | undefined;
   validateField: (fieldName: string) => any;
   setFieldValue: (fieldName: string, value: any) => void;
+  setFieldDisabled: (fieldName: string, isDisabled: boolean) => void;
   getFields: () => Record<string, FormField>;
   // controller
   controller: {

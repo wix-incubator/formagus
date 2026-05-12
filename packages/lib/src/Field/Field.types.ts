@@ -9,6 +9,7 @@ export type OnValidateFunction<T = any> =
 export type FieldState = {
   initialValue: any;
   isDirty: boolean;
+  isDisabled: boolean;
   isTouched: boolean;
   isChanged: boolean;
   isActive: boolean;
@@ -39,6 +40,7 @@ export type OnEqualityCheckFunction<T = any> = (newValue: T, oldValue: T) => boo
 export type FieldCommonProps<T = any> = {
   name: string;
   defaultValue?: T;
+  isDisabled?: boolean;
   onValidate?: OnValidateFunction<T>;
   onFormat?: OnFormatFunction<T>;
   onEqualityCheck?: OnEqualityCheckFunction<T>;

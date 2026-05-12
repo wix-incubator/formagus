@@ -99,6 +99,46 @@ describe('Field state', () => {
     expect(fieldDriver.get.fieldState('isChanged')).toBe('true');
   });
 
+  it('isDisabled - defaults to false', () => {
+    const wrapper = render(<TestForm />).container;
+    const fieldDriver = createInputDriver({wrapper, dataHook: TestForm.FIELD_ONE_NAME});
+
+    expect(fieldDriver.get.fieldState('isDisabled')).toBe('false');
+  });
+
+  it('isDisabled - set via Field prop', () => {
+    const wrapper = render(
+      <TestForm>
+        <Field name={TestForm.FIELD_ONE_NAME} isDisabled={true}>
+          <Input />
+        </Field>
+      </TestForm>,
+    ).container;
+    const fieldDriver = createInputDriver({wrapper, dataHook: TestForm.FIELD_ONE_NAME});
+
+    expect(fieldDriver.get.fieldState('isDisabled')).toBe('true');
+  });
+
+  it('isDisabled - set via API', () => {
+    const formController = createFormController({});
+    const wrapper = render(<TestForm controller={formController} />).container;
+    const fieldDriver = createInputDriver({wrapper, dataHook: TestForm.FIELD_ONE_NAME});
+
+    expect(fieldDriver.get.fieldState('isDisabled')).toBe('false');
+
+    act(() => {
+      formController.API.setFieldDisabled(TestForm.FIELD_ONE_NAME, true);
+    });
+
+    expect(fieldDriver.get.fieldState('isDisabled')).toBe('true');
+
+    act(() => {
+      formController.API.setFieldDisabled(TestForm.FIELD_ONE_NAME, false);
+    });
+
+    expect(fieldDriver.get.fieldState('isDisabled')).toBe('false');
+  });
+
   it('isValidating', async () => {
     const controller = createFormController({});
 

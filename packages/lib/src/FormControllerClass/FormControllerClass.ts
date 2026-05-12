@@ -159,6 +159,7 @@ export class FormControllerClass {
           isMounted: false,
           isRegistered: false,
           isDirty: false,
+          isDisabled: false,
         },
       };
 
@@ -175,7 +176,7 @@ export class FormControllerClass {
   // used for first time field creation
   protected initializeVirtualField = (props: FieldProps) => {
     runInAction(() => {
-      const {name, onEqualityCheck, persist = false} = props;
+      const {name, onEqualityCheck, isDisabled, persist = false} = props;
       const field = this.fields.get(name)!;
 
       const initialValue = get(this.options.initialValues, name) ?? props.defaultValue;
@@ -190,6 +191,7 @@ export class FormControllerClass {
       assign(field.fieldState, {
         initialValue,
         ...(onEqualityCheck ? {onEqualityCheck} : {}),
+        ...(isDisabled !== undefined ? {isDisabled} : {}),
       });
 
       this.updateAPIValues(name, initialValue);
@@ -275,6 +277,7 @@ export class FormControllerClass {
           this.reset(values ?? this.options.initialValues ?? {});
         },
         setFieldValue: this.setFieldValue,
+        setFieldDisabled: this.setFieldDisabled,
         validate: this.validate,
         validateField: this.validateField,
         getField: (fieldName) => this.fields.get(fieldName),
@@ -361,6 +364,14 @@ export class FormControllerClass {
       }
 
       field.fieldState.isActive = isActive;
+    });
+  };
+
+  protected setFieldDisabled: FormApi['setFieldDisabled'] = (fieldName, isDisabled) => {
+    runInAction(() => {
+      this.createFieldIfDoesNotExist(fieldName);
+      const field = this.fields.get(fieldName)!;
+      field.fieldState.isDisabled = isDisabled;
     });
   };
 
